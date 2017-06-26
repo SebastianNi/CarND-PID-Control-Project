@@ -68,7 +68,7 @@ int main()
             steer_value /= abs(steer_value);
           }
 
-          // Raise the speed but slow down quickly the more the car steers
+          // Raise the speed, but slow down quickly the more the car steers
           speed = pow(0.9 - abs(steer_value), 5);
 
           // DEBUG
