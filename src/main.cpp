@@ -50,7 +50,7 @@ int main()
           // j[1] is the data JSON object
           double cte = std::stod(j[1]["cte"].get<std::string>());
           double speed = std::stod(j[1]["speed"].get<std::string>());
-          double angle = std::stod(j[1]["steering_angle"].get<std::string>());
+          // double angle = std::stod(j[1]["steering_angle"].get<std::string>());
           double steer_value;
           /*
           * TODO: Calcuate steering value here, remember the steering value is
@@ -64,12 +64,12 @@ int main()
           steer_value = pid.TotalError();
 
           // Limit the steer value to values between [-1, 1]
-          if(abs(steer_value) > 1.0) {
-            steer_value /= abs(steer_value);
+          if(std::abs(steer_value) > 1.0) {
+            steer_value /= std::abs(steer_value);
           }
 
           // Raise the speed, but slow down quickly the more the car steers
-          speed = pow(0.9 - abs(steer_value), 5);
+          speed = pow(0.9 - std::abs(steer_value), 5);
 
           // DEBUG
           std::cout << "CTE: " << cte << " Steering Value: " << steer_value << std::endl;
